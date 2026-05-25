@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Hotel Storytelling</title>
+
+<script src="https://d3js.org/d3.v7.min.js"></script>
+
+<style>
+body, html {
+  margin: 0;
+  height: 100%;
+  font-family: Arial, sans-serif;
+}
+
+/* layout */
+.container {
+  display: flex;
+  height: 100vh;
+}
+
+/* Storytelling */
+.mainStory {
+  width: 30%;
+  height: 100vh;
+  overflow-y: scroll;
+  border-right: 1px solid #ddd;
+}
+
+/* Pasos */
+.titulo {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 60px;
+  box-sizing: border-box;
+  border-bottom: 1px solid #eee;
+}
+
+/* Pasos */
+.step {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 60px;
+  box-sizing: border-box;
+  border-bottom: 1px solid #eee;
+}
+
+.branch-step {
+  min-height: 750px;
+  padding: 40px 20px;
+  box-sizing: border-box;
+}
+
+/* Botón retroceso */
+.back-button {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 9999;
+
+  padding: 10px 14px;
+  border: none;
+  border-radius: 8px;
+
+  background: #333;
+  color: white;
+  cursor: pointer;
+
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+/* Gráfico fijo */
+#chart {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 0;
+  width: 65%;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.controls-buttons {
+  display: flex;
+  flex-direction: column; 
+  gap: 12px;              
+  align-items: center;    
+}
+
+.controls-buttons button {
+  width: 180px;           
+  padding: 10px 15px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+  <div class="mainStory" id="mainStory">
+
+    <section class="titulo">
+      <h1>Los alquileres en España</h2>
+    </section>
+
+    <section class="step" data-step="1">
+      <h2>Seleccione una ciudad</h2>
+
+      <p class="subtitle">
+        Esta selección permitirá acceder a datos relativos a la ciudad escogida
+      </p>
+
+      <div class="controls">
+        <div class="controls-buttons">
+          <button id="btnMadrid">Madrid</button>
+          <button id="btnBarcelona">Barcelona</button>
+          <button id="btnGranada">Granada</button>
+          <button id="btnMallorca">Mallorca</button>
+          <button id="btnValencia">Valencia</button>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <div id="branchStory" class="mainStory" style="display:none;"></div>
+
+  <div id="chart">
+    <p style="padding:20px;">📊 Haz scroll para ver las visualizaciones</p>
+  </div>
+
+  <button id="btnBack" class="back-button" style="display:none;">
+    ⬅ Volver
+  </button>
+
+</div>
+
+<script type="module" src="js/main.js"></script>
+
+</body>
+</html>
